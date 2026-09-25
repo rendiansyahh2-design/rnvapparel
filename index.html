@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNV APPAREL | Streetwear & Sportswear</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-light: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #262626;
+            --accent-color: #e5e5e5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            background-color: rgba(10, 10, 10, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url('01_hero.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: var(--text-light);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .section {
+            padding: 80px 6%;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Product Cards Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .product-price {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Custom Banner Section */
+        .banner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .banner-card {
+            position: relative;
+            height: 420px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .banner-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 40%, rgba(0,0,0,0.85));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+        }
+
+        .banner-overlay h3 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .banner-overlay p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* Lookbook Gallery Grid */
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .lookbook-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: filter 0.3s, transform 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .lookbook-grid img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        /* Footer & Social Media */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 6% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-social h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .social-item:hover {
+            color: var(--text-muted);
+        }
+
+        .social-item svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            nav a {
+                margin-left: 10px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">RNV APPAREL</div>
+        <nav>
+            <a href="#products">Koleksi</a>
+            <a href="#custom">Custom</a>
+            <a href="#about">Tentang</a>
+            <a href="#lookbook">Lookbook</a>
+            <a href="#contact">Sosial Media</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>RNV APPAREL</h1>
+        <p>Streetwear & Modern Sportswear</p>
+        <a href="#products" class="btn">Lihat Katalog</a>
+    </section>
+
+    <!-- Product Catalog -->
+    <section id="products" class="section">
+        <h2 class="section-title">Koleksi Utama</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="02_jersey.jpg" alt="RNV Performance Jersey">
+                <div class="product-info">
+                    <h3 class="product-title">RNV Performance Jersey</h3>
+                    <p class="product-price">Rp149.000</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="03_tshirt.jpg" alt="RNV Graphic T-Shirt">
+                <div class="product-info">
+                    <h3 class="product-title">RNV Graphic T-Shirt</h3>
+                    <p class="product-price">Rp129.000</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="04_hoodie.jpg" alt="RNV Oversized Hoodie">
+                <div class="product-info">
+                    <h3 class="product-title">RNV Oversized Hoodie</h3>
+                    <p class="product-price">Rp289.000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Jersey & Category Feature -->
+    <section id="custom" class="section">
+        <div class="banner-grid">
+            <div class="banner-card">
+                <img src="07_custom_jersey.jpg" alt="RNV Custom Jersey Service">
+                <div class="banner-overlay">
+                    <h3>RNV Custom Jersey</h3>
+                    <p>Layanan Pembuatan Jersey Custom & Size Grading S hingga 5XL</p>
+                    <a href="https://instagram.com/rnvapparel26" target="_blank" class="btn" style="width: fit-content; padding: 10px 20px; font-size: 0.75rem;">Konsultasi Desain</a>
+                </div>
+            </div>
+            <div class="banner-card">
+                <img src="05_streetwear.jpg" alt="RNV Streetwear Series">
+                <div class="banner-overlay">
+                    <h3>Streetwear Series</h3>
+                    <p>Eksplorasi Gaya Modern Urban Sportswear</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="06_about.jpg" alt="Tentang RNV Apparel">
+            </div>
+            <div class="about-text">
+                <h2>RNV APPAREL</h2>
+                <p>RNV APPAREL memproduksi pakaian olahraga dan jersey kustom dengan standar manufaktur modern. Mengedepankan material fungsional berkinerja tinggi yang dipadukan dengan estetika streetwear terkini.</p>
+                <p>Setiap produk dirancang secara teliti mulai dari pola potong, kenyamanan bahan, hingga ketajaman cetak sublimasi digital.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lookbook Section -->
+    <section id="lookbook" class="section">
+        <h2 class="section-title">Lookbook Gallery</h2>
+        <div class="lookbook-grid">
+            <img src="08_lookbook_01.jpg" alt="Lookbook 01">
+            <img src="09_lookbook_02.jpg" alt="Lookbook 02">
+            <img src="10_lookbook_03.jpg" alt="Lookbook 03">
+            <img src="11_lookbook_04.jpg" alt="Lookbook 04">
+            <img src="12_lookbook_05.jpg" alt="Lookbook 05">
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>RNV APPAREL</h3>
+                <p>Official Store & Custom Order Manufacture</p>
+            </div>
+            <div class="footer-social">
+                <h4>Temukan Kami</h4>
+                <div class="social-links">
+                    <a href="https://instagram.com/rnvapparel26" target="_blank" rel="noopener" class="social-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram: @rnvapparel26
+                    </a>
+                    <a href="https://tiktok.com/@rnv.apparel" target="_blank" rel="noopener" class="social-item">
+                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 1 0 5.55 6.29V9.11a8.27 8.27 0 0 0 4.82 1.54V7.2a4.85 4.85 0 0 1-1.05-.51z"/></svg>
+                        TikTok: @rnv.apparel
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 RNV APPAREL. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
